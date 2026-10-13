@@ -30,10 +30,13 @@ site: dead anchors, missing assets, missing `alt` text, and the deck's fan math.
 
 ## Swapping in real media
 
-* **Hero video.** The hero is a `<video>` whose `poster` is
-  `assets/img/hero-plate.jpg`, so it is cinematic with no video at all. To play
-  a showreel, drop it at `site/assets/img/hero-reel.mp4` and uncomment the
-  `<source>` line in `index.html`.
+* **Hero video.** The hero loads the studio's own reel first, a royalty-free
+  clip second, and the local poster plate last:
+  `https://autospaamerica.com/wp-content/uploads/2023/11/Auto-Spa-America-Hero-Compressed.mp4`
+  then `https://videos.pexels.com/video-files/6159208/6159208-hd_1920_1080_30fps.mp4`.
+  Browsers walk `<source>` in order and fall through on error, and the poster
+  stays underneath, so a blocked or CORS-rejected host degrades to the still
+  rather than to a black box. The reel cross-fades in on `playing`.
 * **Photography.** Replace the files in `assets/img/` keeping the same names.
   The plates are currently generated imagery standing in for the studio's own
   portfolio.
@@ -48,3 +51,8 @@ Lenis smooth scroll is global and drives every scroll-linked effect from one
 progress rule). Anchor navigation is routed through `lenis.scrollTo`, so the
 inertia carries into section jumps. Under `prefers-reduced-motion: reduce`
 Lenis is not started and the deck renders in its fully fanned state.
+
+The two horizontal tracks ("The Drop-Off" and the mobile pricing deck) hide
+their native scrollbars and are dragged with the pointer instead — touch
+swiping still uses native momentum. Snap is `proximity` so a drag is never
+fought by the snap.

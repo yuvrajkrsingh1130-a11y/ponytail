@@ -61,6 +61,62 @@
     if (event.key === 'Escape') closeSheet();
   });
 
+  /* ---- hero reel: cross-fade it in over the poster plate once it plays ---- */
+  var heroVideo = document.querySelector('.hero__video');
+  if (heroVideo) {
+    var started = heroVideo.play();
+    if (started && typeof started.catch === 'function') started.catch(function () {});
+    heroVideo.addEventListener('playing', function () {
+      heroVideo.classList.add('is-ready');
+      var plate = heroVideo.closest('.hero__plate');
+      if (plate) plate.classList.add('is-live');
+    });
+  }
+
+  /* ---- drag-to-scroll the horizontal tracks (their scrollbars are hidden) ---- */
+  function dragScroll(el) {
+    if (!el) return;
+    var active = false;
+    var startX = 0;
+    var startScroll = 0;
+    var travel = 0;
+
+    el.addEventListener('pointerdown', function (event) {
+      if (event.pointerType === 'touch' || event.button !== 0) return;
+      active = true;
+      travel = 0;
+      startX = event.clientX;
+      startScroll = el.scrollLeft;
+      el.classList.add('is-dragging');
+      if (el.setPointerCapture) el.setPointerCapture(event.pointerId);
+    });
+
+    el.addEventListener('pointermove', function (event) {
+      if (!active) return;
+      travel = Math.max(travel, Math.abs(event.clientX - startX));
+      el.scrollLeft = startScroll - (event.clientX - startX);
+    });
+
+    function stop() {
+      if (!active) return;
+      active = false;
+      el.classList.remove('is-dragging');
+    }
+    el.addEventListener('pointerup', stop);
+    el.addEventListener('pointercancel', stop);
+    el.addEventListener('lostpointercapture', stop);
+    // A drag must not also fire the link that happened to sit under the cursor.
+    el.addEventListener('click', function (event) {
+      if (travel > 6) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }, true);
+  }
+
+  dragScroll(document.getElementById('track'));
+  dragScroll(document.getElementById('deck'));
+
   /* ---- header + current section ---- */
   var head = document.getElementById('head');
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));

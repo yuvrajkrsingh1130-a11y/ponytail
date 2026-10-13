@@ -59,10 +59,13 @@
   <!-- 01 · HERO ------------------------------------------------------------ -->
   <section class="hero" id="hero" aria-label="Introduction">
     <div class="hero__plate">
-      <!-- Drop a showreel at assets/img/hero-reel.mp4 and uncomment to play it. -->
-      <video class="hero__video" poster="assets/img/hero-plate.jpg" muted loop playsinline
-             preload="none" aria-hidden="true" tabindex="-1">
-        <!-- <source src="assets/img/hero-reel.mp4" type="video/mp4"> -->
+      <img class="hero__poster" src="assets/img/hero-plate.jpg" alt="" aria-hidden="true"
+           fetchpriority="high" decoding="async">
+      <!-- Official studio reel first, royalty-free fallback second, poster plate last. -->
+      <video class="hero__video" autoplay muted loop playsinline preload="auto"
+             disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1">
+        <source src="https://autospaamerica.com/wp-content/uploads/2023/11/Auto-Spa-America-Hero-Compressed.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/6159208/6159208-hd_1920_1080_30fps.mp4" type="video/mp4">
       </video>
     </div>
     <div class="hero__scrim" aria-hidden="true"></div>
@@ -265,7 +268,7 @@
         </article>
 
         <article class="bento__cell bento__cell--wide reveal">
-          <img src="assets/img/showcase-bead.jpg" alt="Water beading on a ceramic-coated bonnet under a strip light" loading="lazy" decoding="async" width="1408" height="768">
+          <img src="assets/img/ceramic-cure.jpg" alt="Ceramic coating flashing and curing under an infrared lamp" loading="lazy" decoding="async" width="1408" height="768">
           <div class="bento__body bento__body--float">
             <h3>9H Hardness</h3>
             <p>Measured on the pencil scale after cure, logged on your vehicle's file.</p>
@@ -273,11 +276,14 @@
         </article>
 
         <article class="bento__cell bento__cell--note reveal">
-          <p class="bento__kicker">Warranty</p>
-          <h3>Five years,<br>transferable</h3>
-          <p>Registered to the VIN at application. Annual inspection included. Follows the car,
-            not the owner — which matters at resale.</p>
-          <a class="link-arrow" href="#contact">Talk to the desk<span aria-hidden="true">→</span></a>
+          <img src="assets/img/macro-reflection.jpg" alt="Macro photograph of water sheeting across mirror-black paint" loading="lazy" decoding="async" width="1408" height="768">
+          <div class="bento__body bento__body--float bento__body--note">
+            <p class="bento__kicker">Warranty</p>
+            <h3>Five years,<br>transferable</h3>
+            <p>Registered to the VIN at application. Annual inspection included. Follows the
+              car, not the owner — which matters at resale.</p>
+            <a class="link-arrow" href="#contact">Talk to the desk<span aria-hidden="true">→</span></a>
+          </div>
         </article>
       </div>
     </div>
@@ -303,13 +309,25 @@
             <img src="assets/img/showcase-interior.jpg" alt="Hand-stitched leather interior detail" loading="lazy" decoding="async" width="1408" height="768">
             <figcaption>Interior · Leather &amp; carbon</figcaption>
           </figure>
-          <figure class="gallery__item gallery__item--c reveal">
-            <img src="assets/img/showcase-wheel.jpg" alt="Forged carbon wheel and brake caliper detail" loading="lazy" decoding="async" width="1408" height="768">
-            <figcaption>Wheels · Faces coated</figcaption>
+          <figure class="gallery__item gallery__item--sq reveal">
+            <img src="assets/img/showcase-wheel-detail.jpg" alt="Exotic forged wheel and brake caliper being hand detailed" loading="lazy" decoding="async" width="1408" height="768">
+            <figcaption>Wheels · Faces &amp; calipers</figcaption>
           </figure>
-          <figure class="gallery__item gallery__item--c reveal">
+          <figure class="gallery__item gallery__item--sq reveal">
+            <img src="assets/img/showcase-buffing.jpg" alt="Ceramic coating being buffed off a panel with a microfiber towel" loading="lazy" decoding="async" width="1408" height="768">
+            <figcaption>Ceramic · Levelled &amp; buffed</figcaption>
+          </figure>
+          <figure class="gallery__item gallery__item--sq reveal">
+            <img src="assets/img/showcase-leather.jpg" alt="Horsehair brush conditioning diamond-stitched leather" loading="lazy" decoding="async" width="1408" height="768">
+            <figcaption>Leather · Cleaned &amp; conditioned</figcaption>
+          </figure>
+          <figure class="gallery__item reveal">
             <img src="assets/img/showcase-ppf.jpg" alt="Paint protection film being applied to a front fender" loading="lazy" decoding="async" width="1408" height="768">
             <figcaption>Paint protection film</figcaption>
+          </figure>
+          <figure class="gallery__item reveal">
+            <img src="assets/img/showcase-bead.jpg" alt="Water beading on a ceramic-coated bonnet under a strip light" loading="lazy" decoding="async" width="1408" height="768">
+            <figcaption>Ceramic · Hydrophobic</figcaption>
           </figure>
           <figure class="gallery__item gallery__item--d reveal">
             <img src="assets/img/showcase-delivery.jpg" alt="A finished exotic car reflecting a strip light in a dark studio" loading="lazy" decoding="async" width="1408" height="768">
