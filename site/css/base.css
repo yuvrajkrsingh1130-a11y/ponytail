@@ -1,0 +1,114 @@
+/* Auto Spa America — tokens, reset, type, primitives. */
+
+@font-face{font-family:'Bodoni Moda';src:url(../assets/fonts/bodoni-moda-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url(../assets/fonts/bodoni-moda-latin-500-normal.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url(../assets/fonts/bodoni-moda-latin-600-normal.woff2) format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url(../assets/fonts/bodoni-moda-latin-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Inter';src:url(../assets/fonts/inter-latin-300-normal.woff2) format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url(../assets/fonts/inter-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url(../assets/fonts/inter-latin-500-normal.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url(../assets/fonts/inter-latin-600-normal.woff2) format('woff2');font-weight:600;font-style:normal;font-display:swap}
+
+:root{
+  --obsidian:#070707;
+  --carbon:#0b0b0b;
+  --graphite:#121212;
+  --bone:#f1eee8;
+  --ash:#8b8880;
+  --muted:#6e6b65;
+  --champagne:#c8a96a;
+  --line:rgba(241,238,232,.13);
+  --line-2:rgba(241,238,232,.28);
+  --f-display:'Bodoni Moda','Bodoni MT',Didot,'Times New Roman',serif;
+  --f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --pad:clamp(20px,4.6vw,84px);
+  --maxw:1600px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --head-h:78px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--head-h);overflow-x:clip}
+body{
+  margin:0;background:var(--obsidian);color:var(--bone);
+  font-family:var(--f-sans);font-weight:400;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:clip;
+}
+img,video{display:block;max-width:100%}
+h1,h2,h3,h4,p,figure,blockquote,dl,dd{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--champagne);color:var(--obsidian)}
+:focus-visible{outline:1px solid var(--champagne);outline-offset:3px}
+
+/* Lenis */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto !important}
+.lenis [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-smooth iframe{pointer-events:none}
+
+/* film grain over everything */
+.grain{
+  position:fixed;inset:-50%;z-index:300;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 6s steps(5) infinite;
+}
+@keyframes grain{
+  0%{transform:translate3d(0,0,0)}20%{transform:translate3d(-2%,1.5%,0)}
+  40%{transform:translate3d(1.5%,-1%,0)}60%{transform:translate3d(-1%,2%,0)}
+  80%{transform:translate3d(2%,1%,0)}100%{transform:translate3d(0,0,0)}
+}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip-link{position:fixed;top:10px;left:10px;z-index:400;background:var(--bone);color:var(--obsidian);
+  padding:10px 16px;font:600 10px/1 var(--f-sans);letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;transform:translateY(-160%);transition:transform .3s var(--ease)}
+.skip-link:focus{transform:none}
+
+/* ---------- primitives ---------- */
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.section{padding-block:clamp(76px,10vw,152px);border-top:1px solid var(--line)}
+
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font:500 10.5px/1 var(--f-sans);letter-spacing:.26em;text-transform:uppercase;color:var(--champagne);
+}
+.eyebrow::before{content:'';width:clamp(28px,4vw,58px);height:1px;background:var(--champagne);opacity:.6}
+
+.sec-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:clamp(14px,2.2vw,30px);padding-bottom:clamp(30px,4.4vw,58px)}
+.sec-head__no{font:600 10.5px/1 var(--f-sans);letter-spacing:.22em;color:var(--champagne)}
+.sec-head__title{font-family:var(--f-display);font-weight:400;font-size:clamp(2.1rem,4.6vw,4rem);line-height:.94;letter-spacing:-.018em}
+.rule{flex:1 1 60px;height:1px;background:var(--line);transform:translateY(-.45em)}
+.sec-head__note{font:500 10px/1.5 var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ash);max-width:24ch}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.85em;height:56px;padding:0 30px;
+  font:600 10.5px/1 var(--f-sans);letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;border:1px solid transparent;cursor:pointer;
+  transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease);
+}
+.btn__arrow{transition:transform .4s var(--ease)}
+.btn:hover .btn__arrow{transform:translateX(5px)}
+.btn--solid{background:var(--bone);color:var(--obsidian)}
+.btn--solid:hover{background:var(--champagne)}
+.btn--ghost{border-color:var(--line-2);color:var(--bone)}
+.btn--ghost:hover{border-color:var(--champagne);color:var(--champagne)}
+
+.link-arrow{
+  display:inline-flex;align-items:center;gap:.7em;align-self:flex-start;
+  font:600 10px/1 var(--f-sans);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--bone);text-decoration:none;padding-bottom:8px;border-bottom:1px solid var(--line-2);
+  transition:color .35s var(--ease),border-color .35s var(--ease);
+}
+.link-arrow:hover{color:var(--champagne);border-bottom-color:var(--champagne)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .reveal{opacity:1;transform:none}
+  .grain{animation:none}
+}
