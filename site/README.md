@@ -37,6 +37,11 @@ site: dead anchors, missing assets, missing `alt` text, and the deck's fan math.
   Browsers walk `<source>` in order and fall through on error, and the poster
   stays underneath, so a blocked or CORS-rejected host degrades to the still
   rather than to a black box. The reel cross-fades in on `playing`.
+* **Logo.** `assets/img/logo.png` is the studio wordmark, used in the header
+  (44px tall) and the footer (78px). Swap in the real asset at that path —
+  same name, same folder, no code changes. The committed file is a typographic
+  stand-in (Pacifico script + DejaVu block caps) because the original artwork
+  was not available at build time.
 * **Photography.** Replace the files in `assets/img/` keeping the same names.
   The plates are currently generated imagery standing in for the studio's own
   portfolio.

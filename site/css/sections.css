@@ -6,11 +6,8 @@
 .head.is-stuck{background:rgba(7,7,7,.82);backdrop-filter:blur(16px) saturate(1.25);border-bottom-color:var(--line)}
 .head__inner{max-width:var(--maxw);margin-inline:auto;padding:0 var(--pad);height:var(--head-h);
   display:flex;align-items:center;gap:clamp(18px,3vw,46px)}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand__mark{width:34px;height:34px;flex:none;display:grid;place-items:center;border:1px solid var(--champagne);
-  font:600 9px/1 var(--f-sans);letter-spacing:.1em;color:var(--champagne)}
-.brand__name{font:500 11.5px/1 var(--f-sans);letter-spacing:.24em;text-transform:uppercase;color:var(--bone)}
-.brand__name em{font-style:normal;color:var(--champagne)}
+.brand{display:flex;align-items:center;text-decoration:none}
+.brand__logo{height:44px;width:auto;display:block}
 .nav{margin-left:auto;display:flex;gap:clamp(16px,2.3vw,34px)}
 .nav a{position:relative;padding:6px 0;text-decoration:none;color:#a8a49c;
   font:500 10px/1 var(--f-sans);letter-spacing:.2em;text-transform:uppercase;transition:color .35s var(--ease)}
@@ -209,8 +206,10 @@
 /* ---------- footer ---------- */
 .foot{border-top:1px solid var(--line);background:var(--carbon)}
 .foot__lead{border-bottom:1px solid var(--line)}
-.foot__lead .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:34px;
-  padding-block:clamp(58px,9vw,132px)}
+.foot__lead .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  gap:clamp(30px,4vw,64px);padding-block:clamp(58px,9vw,132px)}
+.foot__logo{height:78px;width:auto;display:block}
+.foot__lead-copy{display:flex;flex-wrap:wrap;align-items:flex-end;gap:clamp(24px,3vw,44px)}
 .foot__title{font-family:var(--f-display);font-weight:400;font-size:clamp(2.4rem,6.6vw,5.6rem);
   line-height:.94;letter-spacing:-.028em}
 .foot__title em{font-style:italic;color:var(--champagne)}
@@ -271,6 +270,8 @@
 }
 @media (max-width:620px){
   :root{--head-h:66px}
+  .brand__logo{height:38px}
+  .foot__logo{height:60px}
   .hero__cue{display:none}
   .gallery__item,.gallery__item--a,.gallery__item--b,.gallery__item--sq,.gallery__item--d{grid-column:span 6;aspect-ratio:3/2}
   .bento__cell--lead,.bento__cell--side,.bento__cell--wide,.bento__cell--note{grid-column:span 6}
